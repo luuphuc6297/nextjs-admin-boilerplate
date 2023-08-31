@@ -1,0 +1,10 @@
+{
+    "cSpell.words": [
+        "deepmerge",
+        "fullcalendar",
+        "Iconify"
+    ],
+    "i18n-ally.localesPaths": [
+        "public/locales"
+    ]
+}

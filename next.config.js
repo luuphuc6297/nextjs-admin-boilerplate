@@ -1,4 +1,27 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {}
+const path = require('path')
 
-module.exports = nextConfig
+/** @type {import('next').NextConfig} */
+
+const withTM = require('next-transpile-modules')([
+    '@fullcalendar/common',
+    '@fullcalendar/react',
+    '@fullcalendar/daygrid',
+    '@fullcalendar/list',
+    '@fullcalendar/timegrid'
+])
+
+module.exports = withTM({
+    trailingSlash: true,
+    reactStrictMode: false,
+    experimental: {
+        esmExternals: false
+    },
+    webpack: config => {
+        config.resolve.alias = {
+            ...config.resolve.alias,
+            apexcharts: path.resolve(__dirname, './node_modules/apexcharts-clevision')
+        }
+
+        return config
+    }
+});
