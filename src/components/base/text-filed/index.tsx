@@ -16,8 +16,6 @@ export interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const StyledInputLabel = styled(Typography)(() => ({
-    color: 'rgba(35, 34, 51, 1)',
-    fontFamily: 'Linik Sans',
     fontSize: 14,
     lineHeight: '20px',
     fontWeight: 600,
@@ -32,6 +30,7 @@ export function InputField({
     InputProps,
     inputLabel,
     sx,
+    boxSx,
     onKeyUp,
     ...inputProps
 }: InputFieldProps) {
@@ -45,7 +44,7 @@ export function InputField({
     const router = useRouter()
 
     return (
-        <Box>
+        <Box sx={{...boxSx}}>
             {inputLabel && (
                 <StyledInputLabel>
                     {inputLabel}

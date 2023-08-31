@@ -1,4 +1,5 @@
 import { SubmitButton } from '@/components/base/button/SubmitButton'
+import { SsoForm } from '@/components/base/forms/sso'
 import { InputField } from '@/components/base/text-filed'
 import themeConfig from '@/configs/theme'
 import SsoLayoutV2 from '@/layouts/sso-v2'
@@ -17,14 +18,14 @@ import { useForm } from 'react-hook-form'
 const FormControlLabel = styled(MuiFormControlLabel)<FormControlLabelProps>(({ theme }) => ({
     '& .MuiFormControlLabel-label': {
         fontSize: '0.875rem',
-        color: theme.palette.text.secondary
-    }
+        color: theme.palette.text.secondary,
+    },
 }))
 
 const LinkStyled = styled(Link)(({ theme }) => ({
     fontSize: '0.875rem',
     textDecoration: 'none',
-    color: theme.palette.primary.main
+    color: theme.palette.primary.main,
 }))
 
 const LoginContainer = () => {
@@ -60,14 +61,26 @@ const LoginContainer = () => {
     }
 
     return (
-        <SsoLayoutV2 alt="login" title={`Welcome to ${themeConfig.templateName}! 👋🏻`} caption="Please sign-in to your account and start the adventure">
-            <form autoComplete='off' onSubmit={handleSubmit(handleFormSubmit)}>
+        <SsoLayoutV2
+            alt="login"
+            title={`Welcome to ${themeConfig.templateName}! 👋🏻`}
+            caption="Please sign-in to your account and start the adventure"
+        >
+            <SsoForm autoComplete="off" onSubmit={handleSubmit(handleFormSubmit)}>
                 <InputField
                     id="email-address"
                     name="email"
                     inputLabel="Email address"
                     control={control}
-                    sx={{ display: 'flex', mb: 4 }}
+                    sx={{
+                        display: 'flex',
+                        height: 44,
+                        marginTop: 0.5,
+                        marginBottom: 0.5,
+                    }}
+                    boxSx={{
+                        height: 96
+                    }}
                     onChange={debounce(async () => {
                         await trigger('email')
                     }, 1000)}
@@ -78,6 +91,14 @@ const LoginContainer = () => {
                     control={control}
                     inputLabel="Password"
                     type={showPassword ? 'text' : 'password'}
+                    sx={{
+                        height: 44,
+                        marginTop: 0,
+                        marginBottom: 0.5,
+                    }}
+                    boxSx={{
+                        height: 96
+                    }}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="end">
@@ -99,11 +120,17 @@ const LoginContainer = () => {
                 />
 
                 <Box
-                    sx={{ mb: 4, display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'space-between' }}
+                    sx={{
+                        mb: 4,
+                        display: 'flex',
+                        alignItems: 'center',
+                        flexWrap: 'wrap',
+                        justifyContent: 'space-between',
+                    }}
                 >
-                    <FormControlLabel control={<Checkbox />} label='Remember Me' />
+                    <FormControlLabel control={<Checkbox />} label="Remember Me" />
 
-                    <LinkStyled href='/pages/auth/forgot-password-v2'>Forgot Password?</LinkStyled>
+                    <LinkStyled href="/pages/auth/forgot-password-v2">Forgot Password?</LinkStyled>
                 </Box>
 
                 <SubmitButton
@@ -120,7 +147,7 @@ const LoginContainer = () => {
                 >
                     &nbsp;Login
                 </SubmitButton>
-            </form>
+            </SsoForm>
         </SsoLayoutV2>
     )
 }

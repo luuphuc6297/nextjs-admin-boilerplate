@@ -14,7 +14,8 @@ const Button = (theme: Theme) => {
                     padding: `${theme.spacing(1.875, 3)}`
                 },
                 contained: {
-                    boxShadow: theme.shadows[3],
+                    // boxShadow: theme.shadows[3],
+                    boxShadow: 'none',
                     padding: `${theme.spacing(1.875, 5.5)}`
                 },
                 outlined: {

@@ -9,15 +9,20 @@ import { ThemeOptions } from '@mui/system'
 
 export const fontFace = `
     @font-face {
-        font-family: 'Brandon Grotesque Thin';
-        font-weight: 300;
-        src: url('/fonts/brandon-grotesque/BrandonGrotesque-Thin.ttf') format('truetype');
+        font-family: 'Linik Sans Regular';
+        font-weight: 400;
+        src: url('/fonts/linik-sans/linik-sans.regular.ttf') format('truetype');
     }
     @font-face {
-        font-family: 'Brandon Grotesque';
-        font-weight: 400;
-        src: url('/fonts/brandon-grotesque/BrandonGrotesque-Regular.ttf') format('truetype');
+        font-family: 'Linik Sans';
+        font-weight: 500;
+        src: url('/fonts/linik-sans/linik-sans.medium.ttf') format('truetype');
     }
+    @font-face {
+        font-family: 'Linik Sans Semi Bold';
+        font-weight: 600;
+        src: url('/fonts/linik-sans/linik-sans.semibold.ttf') format('truetype');
+}
 `
 const UserThemeOptions = (): ThemeOptions => {
     // ** To use mode (light/dark/semi-dark), skin(default/bordered), direction(ltr/rtl), etc. for conditional styles, uncomment below line

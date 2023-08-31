@@ -26,6 +26,7 @@ const Typography = (theme: Theme) => {
         h5: {
             fontWeight: 500,
             letterSpacing: 0,
+            fontFamily: 'Linik Sans Semi Bold',
             color: theme.palette.text.primary
         },
         h6: {
@@ -47,7 +48,7 @@ const Typography = (theme: Theme) => {
         body2: {
             lineHeight: 1.5,
             letterSpacing: '0.15px',
-            fontFamily: 'Brandon Grotesque Thin',
+            fontFamily: 'Linik Sans Regular',
             color: theme.palette.text.secondary
         },
         button: {
