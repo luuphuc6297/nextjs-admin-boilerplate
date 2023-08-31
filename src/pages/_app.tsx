@@ -19,8 +19,17 @@ import type { AppProps } from 'next/app'
 import { Router } from 'next/router'
 import NProgress from 'nprogress'
 import * as React from 'react'
+
+import 'prismjs'
+import 'prismjs/components/prism-jsx'
+import 'prismjs/components/prism-tsx'
+import 'prismjs/themes/prism-tomorrow.css'
+
 import 'react-perfect-scrollbar/dist/css/styles.css'
 import 'react-toastify/dist/ReactToastify.min.css'
+
+// import 'src/iconify-bundle/icons-bundle-react'
+
 import '../styles/global.css'
 
 type ExtendedAppProps = AppProps & {
@@ -60,9 +69,11 @@ if (themeConfig.routingLoader) {
 }
 
 const Guard = ({ children, authGuard, guestGuard }: GuardProps) => {
+
     if (guestGuard) {
         return <GuestGuard fallback={<Spinner />}>{children}</GuestGuard>
     } else if (!guestGuard && !authGuard) {
+        console.log('toi day phai k')
         return <>{children}</>
     } else {
         return <AuthGuard fallback={<Spinner />}>{children}</AuthGuard>
@@ -71,7 +82,6 @@ const Guard = ({ children, authGuard, guestGuard }: GuardProps) => {
 
 const App = (props: ExtendedAppProps) => {
     const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
-
 
     const contentHeightFixed = Component?.contentHeightFixed ?? false
 

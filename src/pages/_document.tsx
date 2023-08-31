@@ -10,26 +10,6 @@ import Document, {
 } from 'next/document'
 import React from 'react'
 
-// interface MyDocumentProps extends DocumentProps {
-//     emotionStyleTags: JSX.Element[]
-// }
-
-
-// export default function CustomDocument({ emotionStyleTags }: MyDocumentProps) {
-//     return (
-//         <Html lang="en">
-//             <Head>
-//                 <meta name="theme-color" content="#1976d2" />
-//                 {emotionStyleTags || ''}
-//             </Head>
-//             <body>
-//                 <Main />
-//                 <NextScript />
-//             </body>
-//         </Html>
-//     )
-// }
-
 class CustomDocument extends Document {
     render(): React.JSX.Element {
         return (

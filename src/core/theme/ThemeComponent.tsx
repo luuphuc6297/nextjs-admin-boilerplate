@@ -11,6 +11,7 @@ import overrides from './overrides'
 import typography from './typography'
 
 // ** Global Styles
+import Direction from '@/layouts/Direction'
 import GlobalStyling from './global'
 
 interface Props {
@@ -49,11 +50,11 @@ const ThemeComponent = (props: Props) => {
 
     return (
         <ThemeProvider theme={theme}>
-            {/* <Direction direction={settings.direction}> */}
-            <CssBaseline />
-            <GlobalStyles styles={() => GlobalStyling(theme) as any} />
-            {children}
-            {/* </Direction> */}
+            <Direction direction={settings.direction}>
+                <CssBaseline />
+                <GlobalStyles styles={() => GlobalStyling(theme) as any} />
+                {children}
+            </Direction>
         </ThemeProvider>
     )
 }

@@ -30,6 +30,8 @@ const Layout = (props: LayoutProps) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [hidden])
 
+    console.log('co vao day khong')
+
     if (settings.layout === 'horizontal') {
         return <HorizontalLayout {...props}>{children}</HorizontalLayout>
     }

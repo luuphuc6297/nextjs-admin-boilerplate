@@ -1,7 +1,6 @@
 import { SubmitButton } from '@/components/base/button/SubmitButton'
 import { InputField } from '@/components/base/text-filed'
 import themeConfig from '@/configs/theme'
-import BlankLayout from '@/layouts/BlankLayout'
 import SsoLayoutV2 from '@/layouts/sso-v2'
 import { LoginForm } from '@/types/forms'
 import { LoginSchema } from '@/validations'
@@ -125,9 +124,5 @@ const LoginContainer = () => {
         </SsoLayoutV2>
     )
 }
-
-LoginContainer.getLayout = (page: React.ReactNode) => <BlankLayout>{page}</BlankLayout>
-
-LoginContainer.guestGuard = true
 
 export default LoginContainer

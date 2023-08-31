@@ -51,6 +51,7 @@ const UserLayout = ({ children, contentHeightFixed }: Props) => {
         settings.layout = 'vertical'
     }
 
+    console.log('doo day chua')
     return (
         <Layout
             hidden={hidden}

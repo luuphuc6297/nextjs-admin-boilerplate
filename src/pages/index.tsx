@@ -14,7 +14,6 @@ export const getHomeRoute = (role: string) => {
 const Home = () => {
     // ** Hooks
     const auth = useAuth()
-    console.log('auth__', auth)
     const router = useRouter()
 
     React.useEffect(() => {

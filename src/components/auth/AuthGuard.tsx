@@ -9,6 +9,7 @@ interface AuthGuardProps {
 
 const AuthGuard = (props: AuthGuardProps) => {
     const { children, fallback } = props
+
     const auth = useAuth()
     const router = useRouter()
 
@@ -30,7 +31,7 @@ const AuthGuard = (props: AuthGuardProps) => {
             }
         },
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        [router.route]
+        [router.isReady]
     )
 
     if (auth.loading || auth.user === null) {

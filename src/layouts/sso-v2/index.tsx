@@ -55,7 +55,6 @@ const SsoLayoutV2 = ({ alt, children, caption, title }: SsoLayoutV1Props) => {
 
     // ** Vars
     const { skin } = settings
-    console.log('skin___', skin)
     const hidden = useMediaQuery(theme.breakpoints.down('md'))
 
     const imageSource =
