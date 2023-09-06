@@ -15,7 +15,7 @@ const DefaultPalette = (mode: PaletteMode, skin: Skin, themeColor: ThemeColor) =
         } else if (themeColor === 'secondary') {
             return '#9C9FA4'
         } else if (themeColor === 'success') {
-            return '#93DD5C'
+            return 'rgba(1, 165, 165, 1)'
         } else if (themeColor === 'error') {
             return '#FF8C90'
         } else if (themeColor === 'warning') {
@@ -67,7 +67,7 @@ const DefaultPalette = (mode: PaletteMode, skin: Skin, themeColor: ThemeColor) =
         error: {
             light: '#FF6166',
             main: '#FF4C51',
-            dark: '#E04347',
+            dark: '#ED3F54',
             contrastText: whiteColor,
         },
         warning: {
@@ -83,9 +83,9 @@ const DefaultPalette = (mode: PaletteMode, skin: Skin, themeColor: ThemeColor) =
             contrastText: whiteColor,
         },
         success: {
-            light: '#6AD01F',
-            main: '#56CA00',
-            dark: '#4CB200',
+            light: 'rgba(1, 165, 165, 0.5)',
+            main: 'rgba(1, 165, 165, 1)',
+            dark: 'rgba(1, 165, 165, 0.5)',
             contrastText: whiteColor,
         },
         grey: {

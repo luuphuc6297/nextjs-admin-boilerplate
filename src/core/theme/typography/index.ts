@@ -53,6 +53,7 @@ const Typography = (theme: Theme) => {
         },
         button: {
             letterSpacing: '0.3px',
+            fontFamily: 'Linik Sans Semi Bold',
             color: theme.palette.text.primary
         },
         caption: {

@@ -19,7 +19,7 @@ import type { AppProps } from 'next/app'
 import { Router } from 'next/router'
 import NProgress from 'nprogress'
 import * as React from 'react'
-
+import '@/styles/chat.css'
 import 'prismjs'
 import 'prismjs/components/prism-jsx'
 import 'prismjs/components/prism-tsx'

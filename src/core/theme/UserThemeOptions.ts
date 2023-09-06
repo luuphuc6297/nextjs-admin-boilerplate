@@ -197,7 +197,11 @@ const UserThemeOptions = (): ThemeOptions => {
     } */
     // }
     return {
-        // MuiCssBaseline: {}
+        palette: {
+            success: {
+                main: 'rgba(1, 165, 165, 1)',
+            },
+        },
         components: {
             MuiCssBaseline: {
                 styleOverrides: `
