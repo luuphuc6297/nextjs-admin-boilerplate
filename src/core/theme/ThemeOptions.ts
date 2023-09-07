@@ -28,7 +28,7 @@ const themeOptions = (settings: Settings): ThemeOptions => {
                 fontFamily:
                     userFontFamily ||
                     [
-                        'Inter',
+                        'Linik Sans',
                         'sans-serif',
                         '-apple-system',
                         'BlinkMacSystemFont',

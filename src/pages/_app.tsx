@@ -18,18 +18,18 @@ import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 import { Router } from 'next/router'
 import NProgress from 'nprogress'
-import * as React from 'react'
-import '@/styles/chat.css'
 import 'prismjs'
 import 'prismjs/components/prism-jsx'
 import 'prismjs/components/prism-tsx'
 import 'prismjs/themes/prism-tomorrow.css'
+import * as React from 'react'
 
 import 'react-perfect-scrollbar/dist/css/styles.css'
 import 'react-toastify/dist/ReactToastify.min.css'
 
 // import 'src/iconify-bundle/icons-bundle-react'
 
+// import '@/styles/chat.css'
 import '../styles/global.css'
 
 type ExtendedAppProps = AppProps & {
@@ -69,11 +69,9 @@ if (themeConfig.routingLoader) {
 }
 
 const Guard = ({ children, authGuard, guestGuard }: GuardProps) => {
-
     if (guestGuard) {
         return <GuestGuard fallback={<Spinner />}>{children}</GuestGuard>
     } else if (!guestGuard && !authGuard) {
-        console.log('toi day phai k')
         return <>{children}</>
     } else {
         return <AuthGuard fallback={<Spinner />}>{children}</AuthGuard>

@@ -1,7 +1,9 @@
 import themeConfig from '@/configs/theme'
+import useBgColor from '@/core/hooks/use-bg-color'
 import { useSettings } from '@/core/hooks/use-setting'
-import { Box, BoxProps, Typography, TypographyProps, useMediaQuery } from '@mui/material'
+import { Alert, Box, BoxProps, Typography, TypographyProps, useMediaQuery } from '@mui/material'
 import { styled, useTheme } from '@mui/material/styles'
+import { useRouter } from 'next/router'
 import * as React from 'react'
 
 interface SsoLayoutV1Props {
@@ -51,14 +53,38 @@ const TypographyStyled = styled(Typography)<TypographyProps>(({ theme }) => ({
 const SsoLayoutV2 = ({ alt, children, caption, title }: SsoLayoutV1Props) => {
     // ** Hooks
     const theme = useTheme()
+    const bgColors = useBgColor()
     const { settings } = useSettings()
 
     // ** Vars
     const { skin } = settings
+    const router = useRouter()
     const hidden = useMediaQuery(theme.breakpoints.down('md'))
 
     const imageSource =
         skin === 'bordered' ? `auth-v2-${alt}-illustration-bordered` : `auth-v2-${alt}-illustration`
+
+    const renderAlertArea = React.useCallback(() => {
+        if (router.asPath === '/login/') {
+            return (
+                <Alert
+                    icon={false}
+                    sx={{ py: 3, mb: 6, ...bgColors.primaryLight, '& .MuiAlert-message': { p: 0 } }}
+                >
+                    <Typography
+                        variant="caption"
+                        sx={{ mb: 2, display: 'block', color: 'primary.main' }}
+                    >
+                        Admin: <strong>admin@materio.com</strong> / Pass: <strong>admin</strong>
+                    </Typography>
+                    <Typography variant="caption" sx={{ display: 'block', color: 'primary.main' }}>
+                        Client: <strong>client@materio.com</strong> / Pass: <strong>client</strong>
+                    </Typography>
+                </Alert>
+            )
+        } else return
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [router.asPath])
 
     const renderLeftWrapperBackground = React.useCallback(() => {
         if (!hidden) {
@@ -134,13 +160,15 @@ const SsoLayoutV2 = ({ alt, children, caption, title }: SsoLayoutV1Props) => {
                                 {caption}
                             </Typography>
                         </Box>
+                        {renderAlertArea()}
                         {children}
                     </BoxWrapper>
                 </Box>
             </RightWrapper>
         )
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [hidden, skin, theme.palette.divider])
+        
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [hidden, skin, theme.palette.divider, children])
 
     return (
         <Box className="content-right">

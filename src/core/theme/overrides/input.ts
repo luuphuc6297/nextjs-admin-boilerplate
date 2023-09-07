@@ -67,12 +67,14 @@ const input = (theme: Theme) => {
                     '& .MuiOutlinedInput-root': {
                         borderColor: 'rgba(233, 233, 240, 1)',
                     },
-                    '& input:valid + fieldset': {
-                        borderColor: 'rgba(233, 233, 240, 1)',
-                    },
-                    '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
-                        border: '1px solid rgba(233, 233, 240, 1)',
-                    },
+                    
+                    // '& input:valid + fieldset': {
+                    //     borderColor: 'rgba(233, 233, 240, 1)',
+                    // },
+
+                    // '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+                    //     border: '1px solid rgba(233, 233, 240, 1)',
+                    // },
                 }
             }
         }

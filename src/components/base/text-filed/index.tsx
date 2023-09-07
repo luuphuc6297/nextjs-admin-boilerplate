@@ -41,6 +41,7 @@ export function InputField({
         name,
         control,
     })
+
     const router = useRouter()
 
     return (
@@ -48,7 +49,7 @@ export function InputField({
             {inputLabel && (
                 <StyledInputLabel>
                     {inputLabel}
-                    {router.asPath === '/sign-up' ? (
+                    {router.asPath === '/register/' ? (
                         <span style={{ color: 'rgba(248, 134, 1, 1)' }}>*</span>
                     ) : (
                         ''

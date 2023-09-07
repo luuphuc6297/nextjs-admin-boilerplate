@@ -8,9 +8,9 @@ import { LoginSchema } from '@/validations'
 import { yupResolver } from '@hookform/resolvers/yup'
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
-import { Box, Checkbox, IconButton, InputAdornment, Link } from '@mui/material'
+import { Box, Checkbox, Divider, IconButton, InputAdornment, Link, Typography } from '@mui/material'
 import MuiFormControlLabel, { FormControlLabelProps } from '@mui/material/FormControlLabel'
-import { styled } from '@mui/material/styles'
+import { styled, useTheme } from '@mui/material/styles'
 import { debounce } from 'lodash'
 import * as React from 'react'
 import { useForm } from 'react-hook-form'
@@ -26,10 +26,15 @@ const LinkStyled = styled(Link)(({ theme }) => ({
     fontSize: '0.875rem',
     textDecoration: 'none',
     color: theme.palette.primary.main,
+    '&:hover': {
+        color: 'white'
+    }
 }))
 
 const LoginContainer = () => {
     const [showPassword, setShowPassword] = React.useState<boolean>(false)
+
+    const theme = useTheme()
 
     const initialValues: LoginForm = React.useMemo(
         () => ({
@@ -43,14 +48,16 @@ const LoginContainer = () => {
         control,
         handleSubmit,
         trigger,
-        formState: { isSubmitting },
+        formState: { isSubmitting, isValid },
     } = useForm<LoginForm>({
         mode: 'onChange',
         defaultValues: initialValues,
         resolver: yupResolver(LoginSchema),
     })
 
-    const handleFormSubmit = (formValues: LoginForm) => { }
+    const handleFormSubmit = (formValues: LoginForm) => {
+        console.log('formValues__', formValues)
+    }
 
     const handleClickShowPassword = () => {
         setShowPassword((showPassword) => !showPassword)
@@ -60,94 +67,110 @@ const LoginContainer = () => {
         event.preventDefault()
     }
 
+    console.log('isValid', isValid)
+    React.useEffect(() => {
+        console.log('showPassword', showPassword)
+    }, [showPassword])
+
     return (
         <SsoLayoutV2
             alt="login"
             title={`Welcome to ${themeConfig.templateName}! 👋🏻`}
             caption="Please sign-in to your account and start the adventure"
         >
-            <SsoForm autoComplete="off" onSubmit={handleSubmit(handleFormSubmit)}>
-                <InputField
-                    id="email-address"
-                    name="email"
-                    inputLabel="Email address"
-                    control={control}
-                    sx={{
-                        display: 'flex',
-                        height: 44,
-                        marginTop: 0.5,
-                        marginBottom: 0.5,
-                    }}
-                    boxSx={{
-                        height: 96
-                    }}
-                    onChange={debounce(async () => {
-                        await trigger('email')
-                    }, 1000)}
-                />
-                <InputField
-                    id="password"
-                    name="password"
-                    control={control}
-                    inputLabel="Password"
-                    type={showPassword ? 'text' : 'password'}
-                    sx={{
-                        height: 44,
-                        marginTop: 0,
-                        marginBottom: 0.5,
-                    }}
-                    boxSx={{
-                        height: 96
-                    }}
-                    InputProps={{
-                        endAdornment: (
-                            <InputAdornment position="end">
-                                <IconButton
-                                    aria-label="toggle password visibility"
-                                    onClick={handleClickShowPassword}
-                                    onMouseDown={handleMouseDownPassword}
-                                    edge="end"
-                                >
-                                    {showPassword ? (
-                                        <VisibilityOutlinedIcon fontSize="small" />
-                                    ) : (
-                                        <VisibilityOffOutlinedIcon fontSize="small" />
-                                    )}
-                                </IconButton>
-                            </InputAdornment>
-                        ),
-                    }}
-                />
+            <>
+                <SsoForm onSubmit={handleSubmit(handleFormSubmit)}>
+                    <InputField
+                        id="email-address"
+                        name="email"
+                        inputLabel="Email address"
+                        control={control}
+                        sx={{
+                            display: 'flex',
+                            height: 44,
+                            marginTop: 0.5,
 
-                <Box
-                    sx={{
-                        mb: 4,
-                        display: 'flex',
-                        alignItems: 'center',
-                        flexWrap: 'wrap',
-                        justifyContent: 'space-between',
-                    }}
-                >
-                    <FormControlLabel control={<Checkbox />} label="Remember Me" />
+                            // marginBottom: 0.5,
+                        }}
+                        boxSx={{
+                            height: 96
+                        }}
+                        onChange={debounce(async () => {
+                            await trigger('email')
+                        }, 1000)}
+                    />
+                    <InputField
+                        id="password"
+                        name="password"
+                        control={control}
+                        inputLabel="Password"
+                        type={showPassword ? 'text' : 'password'}
+                        sx={{
+                            height: 44,
+                            marginTop: 0,
+                            marginBottom: 0.5,
+                        }}
+                        boxSx={{
+                            height: 96
+                        }}
+                        InputProps={{
+                            endAdornment: (
+                                <InputAdornment position="end">
+                                    <IconButton
+                                        aria-label="toggle password visibility"
+                                        onClick={handleClickShowPassword}
+                                        onMouseDown={handleMouseDownPassword}
+                                        edge="end"
+                                    >
+                                        {showPassword ? (
+                                            <VisibilityOutlinedIcon fontSize="small" />
+                                        ) : (
+                                            <VisibilityOffOutlinedIcon fontSize="small" />
+                                        )}
+                                    </IconButton>
+                                </InputAdornment>
+                            ),
+                        }}
+                    />
 
-                    <LinkStyled href="/pages/auth/forgot-password-v2">Forgot Password?</LinkStyled>
+                    <Box
+                        sx={{
+                            mb: 4,
+                            display: 'flex',
+                            alignItems: 'center',
+                            flexWrap: 'wrap',
+                            justifyContent: 'space-between',
+                        }}
+                    >
+                        <FormControlLabel control={<Checkbox />} label="Remember Me" />
+
+                        <LinkStyled href="/pages/auth/forgot-password-v2">Forgot Password?</LinkStyled>
+                    </Box>
+
+                    <SubmitButton
+                        sx={{
+                            width: { xs: '100%', md: '384px' },
+                            height: 44,
+                            fontWeight: 700,
+                            mb: ' 24px',
+                        }}
+                        disabled={isSubmitting}
+
+                    // loading={isLoading}
+                    >
+                        &nbsp;Login
+                    </SubmitButton>
+                </SsoForm>
+                <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
+                    <Typography variant='body2' sx={{ mr: 2 }}>
+                        New on our platform?
+                    </Typography>
+                    <Typography variant='body2'>
+                        <LinkStyled href='/register'>Create an account</LinkStyled>
+                    </Typography>
                 </Box>
-
-                <SubmitButton
-                    sx={{
-                        width: { xs: '100%', md: '384px' },
-                        height: 44,
-                        fontWeight: 700,
-                        mb: ' 24px',
-                        fontFamily: 'Linik Sans',
-                    }}
-                    disabled={isSubmitting}
-
-                // loading={isLoading}
-                >
-                    &nbsp;Login
-                </SubmitButton>
-            </SsoForm>
+                <Divider sx={{ my: `${theme.spacing(5)} !important` }}>or</Divider>
+            </>
         </SsoLayoutV2>
     )
 }

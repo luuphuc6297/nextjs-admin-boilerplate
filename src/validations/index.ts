@@ -5,10 +5,11 @@ const passwordValidations = yup
     .required('Please enter your password')
     .min(8, 'Type at least 8 characters')
     .max(50, 'Exceeded 50 characters')
-    .matches(
-        /(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
-        'Password must contains all conditions below:'
-    )
+
+    // .matches(
+    //     /(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
+    //     'Password must contains all conditions below:'
+    // )
 
 export const HomeSchema = yup.object().shape({
     email: yup.string().required('Please enter your email').email('Must be an email'),
@@ -22,7 +23,7 @@ export const LoginSchema = yup.object().shape({
         .min(8, 'Type at least 8 characters.'),
 })
 
-export const SignUpSchema = yup.object().shape({
+export const RegisterSchema = yup.object().shape({
     email: yup.string().required('Please enter your email').email('Must be an email'),
     first_name: yup.string().required('Please enter your first name'),
     last_name: yup.string().required('Please enter your last name'),

@@ -23,9 +23,9 @@ code {
     "Helvetica Neue";
   padding: 0.1rem 0.4rem;
   font-size: 90%;
-  color: #d400ff;
   border-radius: 0.1335rem;
 }
+
 code:not([class*="language-"]):before,
 code:not([class*="language-"]):after {
   content: "`";
