@@ -2,14 +2,13 @@ import { SubmitButton } from '@/components/base/button/SubmitButton'
 import { SsoForm } from '@/components/base/forms/sso'
 import { PWDRequisite, PasswordCriteria } from '@/components/base/pwd'
 import { InputField } from '@/components/base/text-filed'
-import { useSettings } from '@/core/hooks/use-setting'
 import SsoLayoutV2 from '@/layouts/sso-v2'
 import { SignUpForm } from '@/types/forms'
 import { RegisterSchema } from '@/validations'
 import { yupResolver } from '@hookform/resolvers/yup'
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
-import { Box, Divider, IconButton, InputAdornment, Link, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { Box, Divider, IconButton, InputAdornment, Link, Typography, useTheme } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import * as React from 'react'
 import { useForm } from 'react-hook-form'
@@ -35,13 +34,6 @@ const RegisterContainer = () => {
 
     // ** Hooks
     const theme = useTheme()
-    const { settings } = useSettings()
-
-    // ** Vars
-    const { skin } = settings
-    const hidden = useMediaQuery(theme.breakpoints.down('md'))
-
-    const imageSource = skin === 'bordered' ? 'auth-v2-register-illustration-bordered' : 'auth-v2-register-illustration'
 
     const initialValues = React.useMemo(
         () => ({

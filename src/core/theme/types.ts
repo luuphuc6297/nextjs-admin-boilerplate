@@ -10,6 +10,19 @@ declare module '@mui/material/styles' {
             trackBg: string
             tableHeaderBg: string
             primaryGradient: string
+            neutralShade?: string,
+            neutralBorder?: string,
+            neutralDisabled?: string,
+            neutral1?: string,
+            neutral2?: string,
+            neutral3?: string,
+            neutral4?: string,
+            neutral5?: string,
+            neutralBG?: string,
+            primaryBase?: string,
+            primary1?: string,
+            primary2?: string,
+            primaryBG?: string,
         }
     }
     interface PaletteOptions {
@@ -23,6 +36,7 @@ declare module '@mui/material/styles' {
             trackBg?: string
             tableHeaderBg?: string
             primaryGradient?: string
+
         }
     }
 }

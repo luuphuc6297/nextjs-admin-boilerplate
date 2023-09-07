@@ -8,10 +8,11 @@ import { LoginSchema } from '@/validations'
 import { yupResolver } from '@hookform/resolvers/yup'
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
-import { Box, Checkbox, Divider, IconButton, InputAdornment, Link, Typography } from '@mui/material'
+import { Box, Checkbox, Divider, IconButton, InputAdornment, Typography } from '@mui/material'
 import MuiFormControlLabel, { FormControlLabelProps } from '@mui/material/FormControlLabel'
 import { styled, useTheme } from '@mui/material/styles'
 import { debounce } from 'lodash'
+import Link from 'next/link'
 import * as React from 'react'
 import { useForm } from 'react-hook-form'
 
@@ -66,11 +67,6 @@ const LoginContainer = () => {
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
     }
-
-    console.log('isValid', isValid)
-    React.useEffect(() => {
-        console.log('showPassword', showPassword)
-    }, [showPassword])
 
     return (
         <SsoLayoutV2
@@ -144,7 +140,7 @@ const LoginContainer = () => {
                     >
                         <FormControlLabel control={<Checkbox />} label="Remember Me" />
 
-                        <LinkStyled href="/pages/auth/forgot-password-v2">Forgot Password?</LinkStyled>
+                        <LinkStyled href="/forgot-password">Forgot Password?</LinkStyled>
                     </Box>
 
                     <SubmitButton
