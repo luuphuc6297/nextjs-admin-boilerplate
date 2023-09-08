@@ -41,19 +41,3 @@ export interface Answer {
     id: number
     answer: string
 }
-
-export interface Question {
-    _id: string
-    questions: string
-    answers: Answer[]
-    is_active: boolean
-    createdAt: number
-    updatedAt: number
-    type: 'SINGLE' | 'MULTI' // Added 'type' property
-}
-
-export interface QuestionsData {
-    data: Question[]
-    message: string
-    statusCode: number
-}

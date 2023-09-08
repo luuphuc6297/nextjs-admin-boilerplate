@@ -16,6 +16,7 @@ module.exports = withTM({
     experimental: {
         esmExternals: false
     },
+    basePath: '',
     webpack: config => {
         config.resolve.alias = {
             ...config.resolve.alias,

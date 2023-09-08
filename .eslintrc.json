@@ -1,7 +1,6 @@
 {
     "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended", "prettier"],
     "rules": {
-        
         "react/display-name": "off",
         "@next/next/no-img-element": "off",
         "react/no-unescaped-entities": "off",
@@ -10,7 +9,6 @@
         "@typescript-eslint/ban-ts-comment": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-non-null-assertion": "off",
-        
         // add new line above comment
         "lines-around-comment": [
             "error",
@@ -59,6 +57,39 @@
             "files": ["src/iconify-bundle/*"],
             "rules": {
                 "@typescript-eslint/no-var-requires": "off"
+            }
+        },
+        // Configuration for testing
+        {
+            "files": ["**/*.test.ts", "**/*.test.tsx"],
+            "plugins": ["jest", "jest-formatting", "testing-library", "jest-dom"],
+            "extends": [
+                "plugin:jest/recommended",
+                "plugin:jest-formatting/recommended",
+                "plugin:testing-library/react",
+                "plugin:jest-dom/recommended"
+            ]
+        },
+        // Configuration for e2e testing (Cypress)
+        {
+            "files": ["cypress/**/*.ts"],
+            "plugins": ["cypress"],
+            "extends": ["plugin:cypress/recommended"],
+            "parserOptions": {
+                "project": "./cypress/tsconfig.json"
+            }
+        },
+        // Configuration for Storybook
+        {
+            "files": ["*.stories.*"],
+            "extends": ["plugin:storybook/recommended"],
+            "rules": {
+                "import/no-extraneous-dependencies": [
+                    "error",
+                    {
+                        "devDependencies": true
+                    }
+                ]
             }
         }
     ]
