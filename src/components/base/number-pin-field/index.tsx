@@ -17,7 +17,6 @@ const defaultProps: PinFieldProps = {
     validate: /^[0-9]$/,
 }
 
-// const ValidateNumber = styled('p')<{ number?: boolean; $direction: boolean }>(
 
 const StyledPinFiled = styled(PinField)<{ mode?: string }>(({ theme, mode }) => ({
     '&.pin-field': {
