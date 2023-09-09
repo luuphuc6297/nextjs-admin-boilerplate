@@ -1,8 +1,8 @@
-import axios from 'axios'
 import { getToken } from '@/utils'
+import axios from 'axios'
 
 const axiosClient = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_BE_ENDPOINT,
+    baseURL: 'https://test-api.hiyield.xyz',
     headers: {
         'Content-Type': 'application/json',
     },

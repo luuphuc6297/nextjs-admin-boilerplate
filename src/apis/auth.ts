@@ -3,6 +3,7 @@ import {
     ForgotPasswordForm,
     LoginForm,
     ResendEmailForm,
+    ResetPasswordForm,
     SignUpForm,
     VerifyEmailForm,
 } from '@/types/forms'
@@ -18,7 +19,7 @@ export const authApis = {
     login(data: LoginForm): Promise<Response<ResponseLogin>> {
         return axiosClient.post('users/login', data)
     },
-    sign_up(data: SignUpForm): Promise<Response<ResponseSignUp>> {
+    register(data: SignUpForm): Promise<Response<ResponseSignUp>> {
         return axiosClient.post('users/register', data)
     },
     verify_email(data: VerifyEmailForm): Promise<Response<ResponseLogin>> {
@@ -29,6 +30,9 @@ export const authApis = {
     },
     resend_email(data: ResendEmailForm): Promise<ResponseResetPassword> {
         return axiosClient.post('users/send-verify', data)
+    },
+    reset_password(data: ResetPasswordForm): Promise<ResponseResetPassword> {
+        return axiosClient.post('users/reset-password', data)
     },
     current_user(): Promise<Response<ResponseLogin>> {
         return axiosClient.get('users/who-am-i')

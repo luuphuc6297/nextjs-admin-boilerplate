@@ -3,6 +3,7 @@ import { SsoForm } from '@/components/base/forms/sso'
 import { InputField } from '@/components/base/text-filed'
 import themeConfig from '@/configs/theme'
 import SsoLayoutV2 from '@/layouts/sso-v2'
+import { useLogin } from '@/services/auth'
 import { LoginForm } from '@/types/forms'
 import { LoginSchema } from '@/validations'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -37,6 +38,8 @@ const LoginContainer = () => {
 
     const theme = useTheme()
 
+    const { data, mutateAsync: login, isPending } = useLogin()
+
     const initialValues: LoginForm = React.useMemo(
         () => ({
             email: '',
@@ -57,9 +60,10 @@ const LoginContainer = () => {
     })
 
     const handleFormSubmit = (formValues: LoginForm) => {
-        console.log('formValues__', formValues)
+        login(formValues)
     }
 
+    console.log('data__', data)
     const handleClickShowPassword = () => {
         setShowPassword((showPassword) => !showPassword)
     }
@@ -85,8 +89,6 @@ const LoginContainer = () => {
                             display: 'flex',
                             height: 44,
                             marginTop: 0.5,
-
-                            // marginBottom: 0.5,
                         }}
                         boxSx={{
                             height: 96
@@ -151,8 +153,7 @@ const LoginContainer = () => {
                             mb: ' 24px',
                         }}
                         disabled={isSubmitting}
-
-                    // loading={isLoading}
+                        loading={isPending}
                     >
                         &nbsp;Login
                     </SubmitButton>
