@@ -1,4 +1,5 @@
-const nextJest = require('next/jest');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const nextJest = require('next/jest.js')
 
 const createJestConfig = nextJest({
     // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
@@ -6,15 +7,25 @@ const createJestConfig = nextJest({
 });
 
 const customJestConfig = {
+    testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/'],
     moduleNameMapper: {
         // Handle module aliases (this will be automatically configured for you soon)
         '^@/(.*)$': '<rootDir>/src/$1',
+        '^@/components/(.*)$': '<rootDir>/components/$1',
 
         '^@/public/(.*)$': '<rootDir>/public/$1',
 
         '^__mocks__/(.*)$': '<rootDir>/__mocks__/$1',
+
+        // Handle CSS imports (without CSS modules)
+        '^.+\\.(css|sass|scss)$': '<rootDir>/__mocks__/styleMock.js',
+
+        // Handle image imports
+        // https://jestjs.io/docs/webpack#handling-static-assets
+        '^.+\\.(png|jpg|jpeg|gif|webp|avif|ico|bmp|svg)$/i': `<rootDir>/__mocks__/fileMock.js`,
+
     },
-    setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+
     clearMocks: true,
     collectCoverage: true,
     collectCoverageFrom: [
@@ -32,7 +43,11 @@ const customJestConfig = {
             statements: 0,
         },
     },
+    transformIgnorePatterns: [
+        '/node_modules/',
+    ],
     testEnvironment: 'jest-environment-jsdom',
+    setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 };
 
 module.exports = createJestConfig(customJestConfig);

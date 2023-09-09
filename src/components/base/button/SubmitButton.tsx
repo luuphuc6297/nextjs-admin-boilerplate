@@ -11,13 +11,6 @@ const StyledButton = styled(LoadingButton)(({ theme }) => ({
     borderRadius: 4,
     whiteSpace: 'nowrap',
     boxShadow: 'none',
-    
-    // [theme.breakpoints.down('sm')]: {
-    //     width: 320,
-    // },
-    // [theme.breakpoints.down(480)]: {
-    //     width: 180,
-    // },
 }))
 
 export const SubmitButton = ({ children, ...props }: SubmitButtonProps) => {

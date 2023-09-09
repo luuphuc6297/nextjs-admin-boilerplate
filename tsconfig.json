@@ -10,14 +10,15 @@
         "strict": true,
         "noEmit": true,
         "esModuleInterop": true,
-        
 
         "moduleResolution": "node",
         "resolveJsonModule": true,
         "jsx": "preserve",
-        
+        "allowSyntheticDefaultImports": true,
         "isolatedModules": true,
+        "forceConsistentCasingInFileNames": true,
         "incremental": true,
+        "declaration": true,
 
         "baseUrl": ".",
         "plugins": [
@@ -27,9 +28,17 @@
         ],
         "paths": {
             "@/*": ["./src/*"],
+            "@/components/*": ["src/components/*"],
             "@/public/*": ["./public/*"]
         }
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "declaration.d.ts"],
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        ".next/types/**/*.ts",
+        "declaration.d.ts",
+        "src/__tests__/components/SubmitButton.test.js"
+    ],
     "exclude": ["node_modules", "**/*.test.ts", "**/*.test.tsx", "cypress/**/*.ts"]
 }
