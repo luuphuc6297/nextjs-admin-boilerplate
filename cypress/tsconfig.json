@@ -1,7 +1,7 @@
 {
     "extends": "../tsconfig.json",
     "compilerOptions": {
-        "target": "es5",
+        "target": "es2017",
         "lib": ["es5", "dom"],
         "types": ["node", "cypress", "@percy/cypress", "@testing-library/cypress"],
 
