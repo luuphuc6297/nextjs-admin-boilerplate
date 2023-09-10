@@ -1,6 +1,7 @@
 import Box, { BoxProps } from '@mui/material/Box'
 import { styled } from '@mui/material/styles'
 import { BlankLayoutProps } from './types'
+import { SEOHead } from '@/components/seo/seo-head'
 
 const BlankLayoutWrapper = styled(Box)<BoxProps>(({ theme }) => ({
     height: '100vh',
@@ -25,11 +26,14 @@ const BlankLayoutWrapper = styled(Box)<BoxProps>(({ theme }) => ({
 
 const BlankLayout = ({ children }: BlankLayoutProps) => {
     return (
-        <BlankLayoutWrapper className='layout-wrapper'>
-            <Box className='app-content' sx={{ minHeight: '100vh', overflowX: 'hidden', position: 'relative' }}>
-                {children}
-            </Box>
-        </BlankLayoutWrapper>
+        <>
+            <SEOHead />
+            <BlankLayoutWrapper className='layout-wrapper'>
+                <Box className='app-content' sx={{ minHeight: '100vh', overflowX: 'hidden', position: 'relative' }}>
+                    {children}
+                </Box>
+            </BlankLayoutWrapper>
+        </>
     )
 }
 
