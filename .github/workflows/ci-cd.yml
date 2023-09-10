@@ -68,4 +68,4 @@ jobs:
               run: yarn build-storybook
 
             - name: Run e2e tests
-              run: npx percy exec -- npm run e2e:headless
+              run: npx percy exec -- yarn e2e:headless
