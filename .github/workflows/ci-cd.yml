@@ -1,0 +1,40 @@
+name: CI/CD Pipeline
+
+on:
+    pull_request:
+        branches: ['main']
+jobs:
+    run-all-tests:
+        name: E2E, Unit Test, Build Story book
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                node: [16, 18]
+
+        permissions:
+            contents: read
+            pages: write
+            id-token: write
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ matrix.node }}
+            - run: npm ci
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Run Unit Tests
+              run: npm test
+
+            - name: Run E2E Tests
+              run: npm run e2e:headless
+
+            - name: Run Storybook Build
+              run: npm run build-storybook
