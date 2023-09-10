@@ -12,7 +12,7 @@ jobs:
     build:
         strategy:
             matrix:
-                node-version: [16.x, 18.x, 20.x]
+                node-version: [18.x]
 
         name: Build with ${{ matrix.node-version }}
         runs-on: ubuntu-latest
@@ -48,6 +48,12 @@ jobs:
             - if: github.event_name == 'pull_request'
               name: Validate all commits from PR
               run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
+
+            - name: Linter
+              run: npm run lint
+
+            - name: Type checking
+              run: npm run check-types
 
             - name: Run unit tests
               run: npm run test
