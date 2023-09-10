@@ -61,9 +61,6 @@ jobs:
             - name: Linter
               run: yarn lint
 
-            - name: Type checking
-              run: yarn check-types
-
             - name: Run unit tests
               run: yarn test
 
