@@ -67,5 +67,8 @@ jobs:
             - name: Run storybook tests
               run: yarn build-storybook
 
+            - name: Start local
+              run: yarn start
+
             - name: Run e2e tests
               run: npx percy exec -- yarn e2e:headless
