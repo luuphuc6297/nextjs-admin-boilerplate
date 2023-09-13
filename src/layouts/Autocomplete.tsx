@@ -1,7 +1,7 @@
 import themeConfig from '@/configs/theme'
 import Icon from '@/core/components/icon'
 import { Settings } from '@/core/context/setting'
-import { AppBarSearchType } from '@/mockup/types'
+import { AppBarSearchType } from '@/mocks/types'
 import MuiAutocomplete, { AutocompleteRenderInputParams } from '@mui/material/Autocomplete'
 import Box from '@mui/material/Box'
 import MuiDialog from '@mui/material/Dialog'

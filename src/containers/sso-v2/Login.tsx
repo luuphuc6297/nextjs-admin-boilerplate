@@ -2,6 +2,7 @@ import { SubmitButton } from '@/components/base/button/SubmitButton'
 import { SsoForm } from '@/components/base/forms/sso'
 import { InputField } from '@/components/base/text-filed'
 import themeConfig from '@/configs/theme'
+import { useAuth } from '@/hooks/use-auth'
 import SsoLayoutV2 from '@/layouts/sso-v2'
 import { useLogin } from '@/services/auth'
 import { LoginForm } from '@/types/forms'
@@ -33,10 +34,13 @@ const LinkStyled = styled(Link)(({ theme }) => ({
     }
 }))
 
+  
 const LoginContainer = () => {
     const [showPassword, setShowPassword] = React.useState<boolean>(false)
+    const [rememberMe, setRememberMe] = React.useState<boolean>(true)
 
     const theme = useTheme()
+    const auth = useAuth();
 
     const { data, mutateAsync: login, isPending } = useLogin()
 
@@ -52,18 +56,27 @@ const LoginContainer = () => {
         control,
         handleSubmit,
         trigger,
+        setError,
         formState: { isSubmitting, isValid },
     } = useForm<LoginForm>({
-        mode: 'onChange',
+        // Change to production
+        mode: 'onBlur',
         defaultValues: initialValues,
         resolver: yupResolver(LoginSchema),
     })
 
     const handleFormSubmit = (formValues: LoginForm) => {
-        login(formValues)
+        const { email, password } = formValues
+
+        // login(formValues)
+        auth.login({ email, password, rememberMe }, () => {
+            setError('email', {
+                type: 'manual',
+                message: 'Email or Password is invalid'
+            })
+        })
     }
 
-    console.log('data__', data)
     const handleClickShowPassword = () => {
         setShowPassword((showPassword) => !showPassword)
     }
@@ -140,7 +153,7 @@ const LoginContainer = () => {
                             justifyContent: 'space-between',
                         }}
                     >
-                        <FormControlLabel control={<Checkbox />} label="Remember Me" />
+                        <FormControlLabel control={<Checkbox checked={rememberMe} onChange={e => setRememberMe(e.target.checked)} />} label="Remember Me" />
 
                         <LinkStyled href="/forgot-password">Forgot Password?</LinkStyled>
                     </Box>

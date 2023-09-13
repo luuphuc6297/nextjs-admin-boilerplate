@@ -1,6 +1,6 @@
 import defaultAuthConfig from '@/configs/auth'
 import { UserDataType } from '@/context/types'
-import mock from '@/mockup/mock'
+import mock from '@/mocks/mock'
 import jwt from 'jsonwebtoken'
 
 const users: UserDataType[] = [
@@ -10,7 +10,7 @@ const users: UserDataType[] = [
         password: 'admin',
         fullName: 'John Doe',
         username: 'johndoe',
-        email: 'admin@materio.com'
+        email: 'admin@buplabs.com'
     },
     {
         id: 2,
@@ -18,7 +18,7 @@ const users: UserDataType[] = [
         password: 'client',
         fullName: 'Jane Doe',
         username: 'janedoe',
-        email: 'client@materio.com'
+        email: 'client@buplabs.com'
     }
 ]
 
@@ -41,15 +41,23 @@ mock.onPost('/jwt/login').reply(request => {
     const user = users.find(u => u.email === email && u.password === password)
 
     if (user) {
+
+        console.log('jwtConfig.expirationTime', jwtConfig.expirationTime)
+        console.log('secret', typeof jwtConfig.secret)
+        console.log('user__', user.id)
         const accessToken = jwt.sign({ id: user.id }, jwtConfig.secret as string, { expiresIn: jwtConfig.expirationTime })
+        console.log('accessToken__', accessToken)
 
         const response = {
             accessToken,
             userData: { ...user, password: undefined }
         }
 
+        console.log('response__', response)
+
         return [200, response]
     } else {
+        console.log('no vo day ha troi')
         error = {
             email: ['email or Password is Invalid']
         }

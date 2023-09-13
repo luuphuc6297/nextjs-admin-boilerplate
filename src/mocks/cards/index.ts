@@ -1,5 +1,5 @@
-import mock from '@/mockup/mock'
-import { CardStatsType } from '@/mockup/types'
+import mock from '@/mocks/mock'
+import { CardStatsType } from '@/mocks/types'
 
 const cardStatsData: CardStatsType = {
     statsHorizontal: [

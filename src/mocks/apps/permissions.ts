@@ -1,4 +1,4 @@
-import mock from '@/mockup/mock'
+import mock from '@/mocks/mock'
 import { PermissionRowType } from '@/types/app/permission'
 
 const data: { permissions: PermissionRowType[] } = {

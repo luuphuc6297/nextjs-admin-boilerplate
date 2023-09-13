@@ -1,5 +1,5 @@
 // ** Mock Adapter
-import mock from '@/mockup/mock'
+import mock from '@/mocks/mock'
 
 export type IconsDataType = {
     icon: string

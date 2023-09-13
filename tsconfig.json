@@ -29,7 +29,9 @@
         "paths": {
             "@/*": ["./src/*"],
             "@/components/*": ["src/components/*"],
-            "@/public/*": ["./public/*"]
+            "@/public/*": ["./public/*"],
+            "apexcharts": ["./node_modules/apexcharts-clevision"],
+            "apexcharts/*": ["./node_modules/apexcharts-clevision/*"]
         }
     },
     "include": [
@@ -38,7 +40,8 @@
         "**/*.tsx",
         ".next/types/**/*.ts",
         "declaration.d.ts",
-        "src/__tests__/components/SubmitButton.test.js"
-, "src/__tests__/components/TextButton.test.js"    ],
+        "src/__tests__/components/SubmitButton.test.js",
+        "src/__tests__/components/TextButton.test.js"
+    ],
     "exclude": ["node_modules", "**/*.test.ts", "**/*.test.tsx", "cypress/**/*.ts"]
 }

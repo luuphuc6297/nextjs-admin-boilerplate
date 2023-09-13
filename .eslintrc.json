@@ -9,18 +9,7 @@
         "@typescript-eslint/ban-ts-comment": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-non-null-assertion": "off",
-        // add new line above comment
-        "lines-around-comment": [
-            "error",
-            {
-                "beforeLineComment": true,
-                "beforeBlockComment": true,
-                "allowBlockStart": true,
-                "allowClassStart": true,
-                "allowObjectStart": true,
-                "allowArrayStart": true
-            }
-        ],
+    
         // add new line above return
         "newline-before-return": "off",
         // add new line below import
