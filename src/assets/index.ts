@@ -1,0 +1,1 @@
+export const bupLogo = '@/public/images/logos/buplabs.svg'

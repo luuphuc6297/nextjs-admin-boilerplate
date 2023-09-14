@@ -1,3 +1,4 @@
+import { Loader } from '@/components/base/loader'
 import Spinner from '@/core/components/spinner'
 import { useAuth } from '@/hooks/use-auth'
 import { useRouter } from 'next/router'
@@ -26,7 +27,7 @@ const Home = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    return <Spinner sx={{ height: '100%' }} />
+    return <Loader />
 }
 
 export default Home

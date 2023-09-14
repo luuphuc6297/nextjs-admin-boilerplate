@@ -4,7 +4,8 @@ import GuestGuard from '@/components/auth/GuestGuard'
 import { defaultACLObj } from '@/configs/acl'
 import themeConfig from '@/configs/theme'
 import { AuthProvider } from '@/context/AuthContext'
-import Spinner from '@/core/components/spinner'
+// import Spinner from '@/core/components/spinner'
+import '@/components/iconify-bundle/icons-bundle-react'
 import WindowWrapper from '@/core/components/window-wrapper'
 import { SettingsConsumer, SettingsProvider } from '@/core/context/setting'
 import ThemeComponent from '@/core/theme/ThemeComponent'
@@ -25,9 +26,9 @@ import 'prismjs/themes/prism-tomorrow.css'
 import * as React from 'react'
 import 'react-perfect-scrollbar/dist/css/styles.css'
 import 'react-toastify/dist/ReactToastify.min.css'
-import '@/components/iconify-bundle/icons-bundle-react'
 
 // import '@/styles/chat.css'
+import { Loader } from '@/components/base/loader'
 import '../styles/global.css'
 
 type ExtendedAppProps = AppProps & {
@@ -68,11 +69,11 @@ if (themeConfig.routingLoader) {
 
 const Guard = ({ children, authGuard, guestGuard }: GuardProps) => {
     if (guestGuard) {
-        return <GuestGuard fallback={<Spinner />}>{children}</GuestGuard>
+        return <GuestGuard fallback={<Loader />}>{children}</GuestGuard>
     } else if (!guestGuard && !authGuard) {
         return <>{children}</>
     } else {
-        return <AuthGuard fallback={<Spinner />}>{children}</AuthGuard>
+        return <AuthGuard fallback={<Loader />}>{children}</AuthGuard>
     }
 }
 

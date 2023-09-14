@@ -7,6 +7,7 @@ import { styled, useTheme } from '@mui/material/styles'
 import Link from 'next/link'
 
 // ** Configs
+import { NextImage } from '@/components/base/next-image'
 import themeConfig from '@/configs/theme'
 
 interface Props {
@@ -29,7 +30,7 @@ const MenuHeaderWrapper = styled(Box)<BoxProps>(({ theme }) => ({
     justifyContent: 'space-between',
     paddingRight: theme.spacing(4.5),
     transition: 'padding .25s ease-in-out',
-    minHeight: theme.mixins.toolbar.minHeight
+    minHeight: theme.mixins.toolbar.minHeight,
 }))
 
 const HeaderTitle = styled(Typography)<TypographyProps>(({ theme }) => ({
@@ -37,13 +38,13 @@ const HeaderTitle = styled(Typography)<TypographyProps>(({ theme }) => ({
     lineHeight: 'normal',
     textTransform: 'uppercase',
     color: theme.palette.text.primary,
-    transition: 'opacity .25s ease-in-out, margin .25s ease-in-out'
+    transition: 'opacity .25s ease-in-out, margin .25s ease-in-out',
 }))
 
 const StyledLink = styled(Link)({
     display: 'flex',
     alignItems: 'center',
-    textDecoration: 'none'
+    textDecoration: 'none',
 })
 
 const VerticalNavHeader = (props: Props) => {
@@ -58,7 +59,7 @@ const VerticalNavHeader = (props: Props) => {
         navigationBorderWidth,
         menuLockedIcon: userMenuLockedIcon,
         navMenuBranding: userNavMenuBranding,
-        menuUnlockedIcon: userMenuUnlockedIcon
+        menuUnlockedIcon: userMenuUnlockedIcon,
     } = props
 
     // ** Hooks & Vars
@@ -79,17 +80,23 @@ const VerticalNavHeader = (props: Props) => {
         }
     }
 
-    const MenuLockedIcon = () => userMenuLockedIcon || <Icon icon='mdi:radiobox-marked' />
+    const MenuLockedIcon = () => userMenuLockedIcon || <Icon icon="mdi:radiobox-marked" />
 
-    const MenuUnlockedIcon = () => userMenuUnlockedIcon || <Icon icon='mdi:radiobox-blank' />
+    const MenuUnlockedIcon = () => userMenuUnlockedIcon || <Icon icon="mdi:radiobox-blank" />
 
     return (
-        <MenuHeaderWrapper className='nav-header' sx={{ pl: menuHeaderPaddingLeft() }}>
+        <MenuHeaderWrapper className="nav-header" sx={{ pl: menuHeaderPaddingLeft() }}>
             {userNavMenuBranding ? (
                 userNavMenuBranding(props)
             ) : (
-                <StyledLink href='/'>
-                    <svg
+                <StyledLink href="/">
+                    <NextImage
+                        src="/images/logos/buplabs.svg"
+                        width={48}
+                        height={48}
+                        alt="BupLabs"
+                    />
+                    {/* <svg
                         width={30}
                         height={25}
                         version='1.1'
@@ -147,8 +154,14 @@ const VerticalNavHeader = (props: Props) => {
                                 </g>
                             </g>
                         </g>
-                    </svg>
-                    <HeaderTitle variant='h6' sx={{ ...menuCollapsedStyles, ...(navCollapsed && !navHover ? {} : { ml: 3 }) }}>
+                    </svg> */}
+                    <HeaderTitle
+                        variant="h6"
+                        sx={{
+                            ...menuCollapsedStyles,
+                            ...(navCollapsed && !navHover ? {} : { ml: 3 }),
+                        }}
+                    >
                         {themeConfig.templateName}
                     </HeaderTitle>
                 </StyledLink>
@@ -161,7 +174,7 @@ const VerticalNavHeader = (props: Props) => {
                     onClick={toggleNavVisibility}
                     sx={{ p: 0, backgroundColor: 'transparent !important' }}
                 >
-                    <Icon icon='mdi:close' fontSize={20} />
+                    <Icon icon="mdi:close" fontSize={20} />
                 </IconButton>
             ) : userMenuLockedIcon === null && userMenuUnlockedIcon === null ? null : (
                 <IconButton
@@ -175,8 +188,8 @@ const VerticalNavHeader = (props: Props) => {
                         '& svg': {
                             fontSize: '1.25rem',
                             ...menuCollapsedStyles,
-                            transition: 'opacity .25s ease-in-out'
-                        }
+                            transition: 'opacity .25s ease-in-out',
+                        },
                     }}
                 >
                     {navCollapsed ? MenuUnlockedIcon() : MenuLockedIcon()}
