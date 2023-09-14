@@ -62,3 +62,6 @@ export interface UpdatePasswordForm {
     oldPassword: string
     newPassword: string
 }
+
+
+export type DateType = Date | null | undefined

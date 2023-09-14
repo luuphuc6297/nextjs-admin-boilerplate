@@ -64,8 +64,9 @@ const CrmTotalGrowth = () => {
             monochrome: {
                 enabled: true,
                 shadeTo: 'light',
-                shadeIntensity: 1,
-                color: theme.palette.success.main
+                // ** Must to fix
+                // shadeIntensity: 1,
+                // color: theme.palette.success.main
             }
         },
         xaxis: {

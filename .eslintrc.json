@@ -43,7 +43,7 @@
     },
     "overrides": [
         {
-            "files": ["src/iconify-bundle/*"],
+            "files": ["src/components/iconify-bundle/*"],
             "rules": {
                 "@typescript-eslint/no-var-requires": "off"
             }
