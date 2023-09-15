@@ -14,8 +14,6 @@ Developer experience first:
 -   🔥 Type checking [TypeScript](https://www.typescriptlang.org)
 -   💎 Integrate with [Material UI](https://tailwindcss.com)
 -   ✅ Strict Mode for TypeScript and React 18
--   🔒 Authentication with [Clerk](https://clerk.com?utm_source=github&utm_medium=sponsorship&utm_campaign=nextjs-boilerplate): Sign up, Sign in, Sign out, Forgot password, Reset password, and more.
--   📦 Type-safe ORM with DrizzleORM, compatible with SQLite, PostgreSQL, and MySQL
 -   💽 Global Database with [Turso](https://turso.tech/?utm_source=nextjsstarterbp)
 -   ♻️ Type-safe environment variables with T3 Env
 -   ⌨️ Form with React Hook From
