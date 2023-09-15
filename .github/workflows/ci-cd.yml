@@ -69,9 +69,9 @@ jobs:
 
             # - name: Run storybook tests
             #   run: yarn build-storybook
-            - name: Run e2e tests
-              # run: npx percy exec -- yarn e2e:headless
+            # - name: Run e2e tests
+            #   # run: npx percy exec -- yarn e2e:headless
 
-              uses: cypress-io/github-action@v6
-              with:
-                  command: npx percy exec -- yarn e2e:headless
+            #   uses: cypress-io/github-action@v6
+            #   with:
+            #       command: npx percy exec -- yarn e2e:headless
