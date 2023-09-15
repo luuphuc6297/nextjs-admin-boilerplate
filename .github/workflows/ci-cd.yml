@@ -47,10 +47,13 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
                   cache: 'npm'
+
             - name: Install Yarn
               run: npm install -g yarn
+
             - name: Install dependencies
               run: yarn
+
             - name: Build
               run: yarn build
 
@@ -66,11 +69,9 @@ jobs:
 
             # - name: Run storybook tests
             #   run: yarn build-storybook
-
             - name: Run e2e tests
+              # run: npx percy exec -- yarn e2e:headless
+
               uses: cypress-io/github-action@v6
               with:
-                  build: yarn build
-                  start: yarn start
                   command: npx percy exec -- yarn e2e:headless
-                  # browser: chrome
