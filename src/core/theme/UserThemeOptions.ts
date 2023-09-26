@@ -5,7 +5,7 @@ import { ThemeOptions } from '@mui/system'
 // import corePalette from '@/core/theme/palette'
 
 // ** To use mode (light/dark/semi-dark), skin(default/bordered), direction(ltr/rtl), etc. for conditional styles, uncomment below line
-// import { useSettings } from 'src/@core/hooks/useSettings'
+// import { useSettings } from '@/core/hooks/useSettings'
 
 export const fontFace = `
     @font-face {

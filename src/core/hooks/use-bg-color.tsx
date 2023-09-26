@@ -34,7 +34,7 @@ const UseBgColor = () => {
             backgroundColor: theme.palette.success.main,
         },
         successLight: {
-            color: theme.palette.success.main,
+            color: 'white',
             backgroundColor: hexToRGBA(theme.palette.success.main, 0.12),
         },
         errorFilled: {
