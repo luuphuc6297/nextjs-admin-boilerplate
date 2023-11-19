@@ -1,7 +1,8 @@
 import Box, { BoxProps } from '@mui/material/Box'
 import { styled } from '@mui/material/styles'
-import { BlankLayoutProps } from './types'
+
 import { SEOHead } from '@/components/seo/seo-head'
+import { BlankLayoutProps } from '@/core/layouts/types'
 
 const BlankLayoutWrapper = styled(Box)<BoxProps>(({ theme }) => ({
     height: '100vh',

@@ -1,6 +1,6 @@
 import Icon from '@/core/components/icon'
 import OptionsMenu from '@/core/components/option-menu'
-import { ThemeColor } from '@/layouts/types'
+import { ThemeColor } from '@/core/layouts/types'
 import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
